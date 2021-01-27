@@ -1,0 +1,14 @@
+{
+    "discord": {
+        "token": "bottokengoeshere",
+        "user": "botuseridgoeshere"
+
+    },
+
+    "coin": {
+        "type": "ethereum"
+
+    }
+}
+
+
