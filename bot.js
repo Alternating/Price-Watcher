@@ -1,8 +1,8 @@
 "use strict";
 require('dotenv').config();
 const prefix = '!';
-const TOKEN = process.setting.discord.token;
-const coin = process.settings.coin.type;
+const TOKEN = process.settings.discord.token;
+const coin = process.settingss.coin.type;
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
