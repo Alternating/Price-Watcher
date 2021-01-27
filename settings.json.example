@@ -8,7 +8,12 @@
     "coin": {
         "type": "ethereum"
 
-    }
+    },
+
+    "timer": {
+        "timer: "600000"  // 10mins is the standard but you can go lower at your own risk of getting a softban from the function of nickname change
+    },
+
 }
 
 
