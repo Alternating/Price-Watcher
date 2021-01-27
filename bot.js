@@ -1,6 +1,7 @@
 "use strict";
 process.settings = require("./settings.json");
 const prefix = '!';
+const rate = process.settings.timer.checkrate;
 const TOKEN = process.settings.discord.token;
 const coin = process.settings.coin.type;
 const fetch = require('node-fetch');
@@ -62,7 +63,7 @@ async function main() {
 (async () => { console.log((await getPrice())) })();
 (async () => { console.log((await getPrice2())) })();
 
-setInterval(() => main(), 5000);
+setInterval(() => main(), (rate));
 
 
 
