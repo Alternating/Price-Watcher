@@ -24,7 +24,7 @@ async function getPrice() {
  let dataCoin;
  await fetch(marketcap).then(async (res) => {
      await res.json().then((data) => {
-       dataCoin = data.(coin).usd;
+       dataCoin = [data][(coin)][usd];
      });
  });
  return dataCoin;
@@ -36,7 +36,7 @@ async function getPrice2() {
  let dataCoin2;
  await fetch(marketcap).then(async (res) => {
      await res.json().then((data) => {
-       dataCoin2 = data.(coin).btc;
+       dataCoin2 = [data][(coin)][btc];
      });
  });
  return dataCoin2;
