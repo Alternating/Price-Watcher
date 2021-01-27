@@ -1,0 +1,11 @@
+{
+    "discord": {
+        "token": "discord bot user token",
+        "user": "BOT USER ID"
+        
+    },
+
+    "coin": {
+        "type": "btc"
+        
+    }
