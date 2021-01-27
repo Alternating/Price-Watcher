@@ -8,15 +8,13 @@ const bot = new Discord.Client();
 var request = require('request');
 const marketcap = 'https://api.coingecko.com/api/v3/simple/price?ids=syscoin&vs_currencies=vs_currency%2Cusd%2Cbtc'
 
-
+//client.login('NzUxODA4Mzk4NjM4NzEwOTM0.X1OeIg.sE3gx3ZKCCXfGgDJN3KN0pjKBWY');  may get rid of the dotenv in place of this
 
 bot.login(TOKEN);
 
 bot.on('ready', () => {
-//let value = 0;
- //   setInterval(() => {
-  //    bot.guilds.cache.forEach(guild => guild.me.setNickname((await getPrice2()).toString());
-   // }, 15001);
+ //    bot.guilds.cache.forEach(guild => guild.me.setNickname((await getPrice2()).toString());
+
 
 console.info(`Logged in as ${bot.user.tag}!`);
 });
@@ -68,4 +66,4 @@ setInterval(() => main(), 500000);
 
 
 
-//client.login('NzUxODA4Mzk4NjM4NzEwOTM0.X1OeIg.sE3gx3ZKCCXfGgDJN3KN0pjKBWY');
+
