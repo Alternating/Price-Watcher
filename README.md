@@ -4,3 +4,8 @@
 - Edit the settings.json.example and saved it as settings.json
 - edit the link with your bot's client id and invite your bot to your server-
 - https://discordapp.com/oauth2/authorize?client_id=ChAng3M3&scope=bot&permissions=67109888
+
+
+Work that is needed
+-update bot.js to use a variable that is set in the settings file - currently hardcoded for each coin
+-one script to host price checks on all coins in the settings file??? 
