@@ -7,5 +7,5 @@
 
 
 Work that is needed
--update bot.js to use a variable that is set in the settings file - currently hardcoded for each coin
--one script to host price checks on all coins in the settings file??? 
+- update bot.js to use a variable that is set in the settings file - currently hardcoded for each coin
+- one script to host price checks on all coins in the settings file??? 
