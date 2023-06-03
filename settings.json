@@ -1,0 +1,20 @@
+{
+    "discord": {
+        "token": "enterdiscordtokenhere",
+        "user": ""
+
+    },
+
+    "coin": {
+        "type": "bitcoin"
+
+    },
+
+    "timer": {
+        "checkrate": 180000
+
+    }
+
+}
+
+

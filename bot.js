@@ -8,65 +8,79 @@ const fetch = require('node-fetch');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 var request = require('request');
-const marketcap = 'https://api.coingecko.com/api/v3/simple/price?ids=' + (coin) + '&vs_currencies=vs_currency%2Cusd%2Cbtc'
-
 
 bot.login(TOKEN);
 
 bot.on('ready', () => {
  //    bot.guilds.cache.forEach(guild => guild.me.setNickname((await getPrice2()).toString());
 console.info(`Logged in as ${bot.user.tag}!`);
-console.log(marketcap);
+//console.log(marketcap);
 });
 
+const axios = require('axios');
+
+
 async function getPrice() {
- let dataCoin;
- await fetch(marketcap).then(async (res) => {
-     await res.json().then((data) => {
-       dataCoin = data[(coin)].usd;
-     });
- });
- return dataCoin;
+  let datacoin;
+	await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/SYS-USD')
+  	.then(response => {
+    	const data = response.data;
+    	const currentPrice = data.chart.result[0].meta.regularMarketPrice;
+    	const previousPrice = data.chart.result[0].meta.chartPreviousClose;
+    	const change = currentPrice - previousPrice;
+    	const changePercent = (change / previousPrice) * 100;
+    datacoin = currentPrice
+    console.log(`${datacoin}`);
+    //console.log(`${changePercent.toFixed(2)}%`);
+  })
+  .catch(error => {
+    console.log('Error fetching price:', error);
+  });
+return datacoin;
+
 }
 
-//(async () => { console.log((await getPrice())) })();
+async function getPercent() {
+  let Percent;
+        await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/SYS-USD')
+        .then(response => {
+        const data = response.data;
+        const currentPrice = data.chart.result[0].meta.regularMarketPrice;
+        const previousPrice = data.chart.result[0].meta.chartPreviousClose;
+        const change = currentPrice - previousPrice;
+        const changePercent = (change / previousPrice) * 100;
+    Percent = changePercent
+    console.log(`${Percent}`);
+    //console.log(`${changePercent.toFixed(2)}%`);
+  })
+  .catch(error => {
+    console.log('Error fetching percent:', error);
+  });
+return Percent;
 
-async function getPrice2() {
- let dataCoin2;
- await fetch(marketcap).then(async (res) => {
-     await res.json().then((data) => {
-          dataCoin2 = data[(coin)].btc;
-
-console.log(dataCoin2);
-     });
- });
- return dataCoin2;
 }
+
+
 
 async function main() {
-
-  let sysPrice = await getPrice()
-  console.log(sysPrice);
-  await bot.user.setActivity(`$${sysPrice}|USD|`, { type: 'WATCHING' })
+  
+ let sysPrice = await getPrice()
+ let mathprice = Math.round(((sysPrice) + Number.EPSILON) * 10000) / 10000  
+ console.log(sysPrice);
+    await bot.guilds.cache.forEach(guild => guild.me.setNickname(`$${mathprice}    |USD|`))
+// end price grab
+  let sysPercent = await getPercent()
+  let mathPercent = Math.round(((sysPercent) + Number.EPSILON) * 100) / 100
+   await bot.user.setActivity(`${mathPercent}% |24hr|`, { type: 'PLAYING' })
     .then(presence => console.log(`Activity set to ${presence.activities[0].name}`))
     .catch(err => console.log(err));
-//    bot.user.setUsername(`Syscoin`);
-   let sysPrice2 = await getPrice2()
-   console.log(sysPrice2);
- 
-   await bot.guilds.cache.forEach(guild => guild.me.setNickname(`${sysPrice2}    |BTC|`))
-    console.log(`Name set to ${sysPrice2}`);
+// end percent grab
 
-};
+   if ((sysPercent) > 0) await bot.user.setStatus('available')
+   if ((sysPercent) < 0) await bot.user.setStatus('dnd')};
+// sets status from green to red and vice versa to correlate with a positive % return or negative % return
 
-
-(async () => { console.log((await getPrice())) })();
-(async () => { console.log((await getPrice2())) })();
 
 setInterval(() => main(), (rate));
-
-
-
-
 
 
