@@ -22,7 +22,7 @@ const axios = require('axios');
 
 async function getPrice() {
   let datacoin;
-	await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/SYS-USD')
+	await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/' + (coin))
   	.then(response => {
     	const data = response.data;
     	const currentPrice = data.chart.result[0].meta.regularMarketPrice;
@@ -42,7 +42,7 @@ return datacoin;
 
 async function getPercent() {
   let Percent;
-        await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/SYS-USD')
+        await axios.get('https://query1.finance.yahoo.com/v8/finance/chart/' + (coin))
         .then(response => {
         const data = response.data;
         const currentPrice = data.chart.result[0].meta.regularMarketPrice;
